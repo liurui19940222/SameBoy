@@ -1,0 +1,7 @@
+.vscode
+win/bin
+win/obj
+switch/build
+switch/*.elf
+switch/*.nacp
+switch/*.nro
