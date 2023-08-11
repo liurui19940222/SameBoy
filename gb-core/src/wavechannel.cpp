@@ -1,5 +1,9 @@
 #include "../include/wavechannel.h"
 
+WaveChannel::WaveChannel() : Channel() {
+    _waveData.resize(16);
+}
+
 void WaveChannel::Write(uint16 regIndex, uint8 data)
 {
     Channel::Write(regIndex, data);

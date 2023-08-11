@@ -31,8 +31,8 @@ void MBC1Chip::Write(uint16 address, uint8 value)
 	}
 	else if (inRange(address, 0xA000, 0xBFFF)) {
 		if (!_ramEnabled) { return; }
-		int offset = 0x2000 * _ramBankNo;
-		int addressInRam = (address - 0xA000) + offset;
+		size_t offset = 0x2000 * _ramBankNo;
+		size_t addressInRam = (address - 0xA000) + offset;
 		if (addressInRam < _ram.size()) {
 			_ram.at(addressInRam) = value;
 		}
@@ -57,8 +57,8 @@ uint8 MBC1Chip::Read(uint16 address)
 		return _rom.at(address_in_rom);
 	}
 	else if (inRange(address, 0xA000, 0xBFFF)) {
-		int offset_into_ram = 0x2000 * _ramBankNo;
-		int address_in_ram = (address - 0xA000) + offset_into_ram;
+		size_t offset_into_ram = 0x2000 * _ramBankNo;
+		size_t address_in_ram = (address - 0xA000) + offset_into_ram;
 		if (address_in_ram < _ram.size()) {
 			return _ram.at(address_in_ram);
 		}

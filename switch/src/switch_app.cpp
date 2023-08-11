@@ -8,17 +8,17 @@
 SwitchApp::SwitchApp(SDL_Renderer *renderer) : App(string("opcodes.txt"))
 {
     // Set up SDL audio spec
-	SDL_AudioSpec audioSpec;
-	audioSpec.freq = 44100;
-	audioSpec.format = AUDIO_F32SYS;
-	audioSpec.channels = 2;
-	audioSpec.samples = PCM_BUFFER_SIZE;	// Adjust as needed
-	audioSpec.callback = NULL;
-	audioSpec.userdata = this;
+	// SDL_AudioSpec audioSpec;
+	// audioSpec.freq = 44100;
+	// audioSpec.format = AUDIO_F32SYS;
+	// audioSpec.channels = 2;
+	// audioSpec.samples = PCM_BUFFER_SIZE;	// Adjust as needed
+	// audioSpec.callback = NULL;
+	// audioSpec.userdata = this;
 
-	SDL_AudioSpec obtainedSpec;
-	SDL_OpenAudio(&audioSpec, &obtainedSpec);
-	SDL_PauseAudio(0);
+	// SDL_AudioSpec obtainedSpec;
+	// SDL_OpenAudio(&audioSpec, &obtainedSpec);
+	// SDL_PauseAudio(0);
 
     _renderer = renderer;
     _mainTex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, GB_SCREEN_W, GB_SCREEN_H);
@@ -53,12 +53,12 @@ void SwitchApp::Render()
     SDL_RenderPresent(_renderer);
 
     // 播放声音样本数据
-    if (_needFlushSamples)
-    {
-        std::lock_guard<std::mutex> lock(_sampleMutex);
-        SDL_QueueAudio(1, _soundData, _smaplesSize * sizeof(float));
-        _needFlushSamples = false;
-    }
+    // if (_needFlushSamples)
+    // {
+    //     std::lock_guard<std::mutex> lock(_sampleMutex);
+    //     SDL_QueueAudio(1, _soundData, _smaplesSize * sizeof(float));
+    //     _needFlushSamples = false;
+    // }
 }
 
 void SwitchApp::ProcessEvent(const SDL_Event &event)

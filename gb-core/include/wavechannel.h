@@ -1,17 +1,19 @@
 #pragma once
 
+#include <vector>
 #include "channel.h"
 #include "datatype.h"
 
 class WaveChannel : public Channel {
 public:
+    WaveChannel();
     void Write(uint16 regIndex, uint8 data) override;
     void Step() override;
-    inline uint8 ReadWave(uint16 waveIndex) { return _waveData[waveIndex]; }
-    inline void WriteWave(uint16 waveIndex, uint8 waveData) { _waveData[waveIndex] = waveData; }
+    inline uint8 ReadWave(int waveIndex) { return _waveData[waveIndex]; }
+    inline void WriteWave(int waveIndex, uint8 waveData) { _waveData[waveIndex] = waveData; }
 
 protected:
-    uint8 _waveData[16] = {0};
+    std::vector<uint8> _waveData;
     uint8 _posOnWave = 0;
 
     void onTrigger() override;
