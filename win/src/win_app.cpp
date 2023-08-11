@@ -152,7 +152,7 @@ int main(int argc, char* argv[]) {
     SDL_Init(SDL_INIT_VIDEO);
 
     // 创建窗口和渲染器
-    SDL_Window* window = SDL_CreateWindow("NewBoy", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, GB_SCREEN_W * 2, GB_SCREEN_H * 2, 0);
+    SDL_Window* window = SDL_CreateWindow("SameBoy", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, GB_SCREEN_W * 2, GB_SCREEN_H * 2, 0);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
     // 禁用输入法
